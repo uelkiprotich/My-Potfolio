@@ -29,7 +29,6 @@ const Contact = () => {
     setLoading(true);
     setResponseMsg('');
 
-    // Simple front-end validation example
     if (!formData.email || !formData.message) {
       setResponseMsg('Email and message are required.');
       setLoading(false);
@@ -91,11 +90,15 @@ const Contact = () => {
 
             <div className="flex items-center gap-4 text-gray-300">
               <FaPhone className="text-cyan-400 text-xl" />
-              <span>+254 713 240 931</span>
+              <a href="tel:+254713240931" className="hover:underline">
+                +254 713 240 931
+              </a>
             </div>
             <div className="flex items-center gap-4 text-gray-300">
               <FaEnvelope className="text-cyan-400 text-xl" />
-              <span>uelkiprotich@gmail.com</span>
+              <a href="mailto:uelkiprotich@gmail.com" className="hover:underline">
+                uelkiprotich@gmail.com
+              </a>
             </div>
             <div className="flex items-center gap-4 text-gray-300">
               <FaMapMarkerAlt className="text-cyan-400 text-xl" />
