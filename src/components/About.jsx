@@ -8,7 +8,8 @@ const About = () => {
 
   return (
     <section id="about" className="bg-[#0e1122] text-white px-6 py-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-full px-4 md:px-8">
+
         {/* Title */}
         <h2 className="text-3xl font-semibold text-center mb-12">
           About <span className="text-cyan-400">Me</span>

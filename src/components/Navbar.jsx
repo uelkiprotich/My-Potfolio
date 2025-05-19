@@ -3,14 +3,20 @@ import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
-
   const navLinks = ['home', 'about', 'skills', 'projects', 'contact'];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50 overflow-x-hidden">
-      <div className="w-screen px-4 py-4 flex items-center">
-        <h1 className="text-xl font-bold text-blue-600 mr-8">UEL KIPROTICH</h1>
-        <div className="hidden md:flex space-x-6 flex-grow justify-end">
+    <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-md shadow-md z-50">
+      <div className="flex items-center justify-between py-4">
+        {/* Logo flush left */}
+        <div className="flex-shrink-0 pl-4">
+          <h1 className="text-2xl font-extrabold text-blue-600 tracking-wide cursor-pointer select-none">
+            UEL KIPROTICH
+          </h1>
+        </div>
+
+        {/* Nav links container */}
+        <div className="hidden md:flex space-x-12 text-gray-700 text-lg font-medium max-w-7xl mx-auto px-6 flex-grow justify-end">
           {navLinks.map(link => (
             <Link
               key={link}
@@ -18,7 +24,7 @@ const Navbar = () => {
               smooth={true}
               duration={500}
               offset={-70}
-              className="cursor-pointer text-gray-700 hover:text-blue-500 capitalize"
+              className="capitalize cursor-pointer hover:text-blue-600 transition-colors duration-300"
             >
               {link}
             </Link>
@@ -26,29 +32,33 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger Icon */}
-        <div className="md:hidden z-50" onClick={() => setNavOpen(!navOpen)}>
-          <button className="text-2xl">&#9776;</button>
-        </div>
-
-        {/* Mobile Menu */}
-        {navOpen && (
-          <div className="absolute top-16 left-0 w-screen bg-white shadow-md py-6 flex flex-col items-center space-y-4 md:hidden">
-            {navLinks.map(link => (
-              <Link
-                key={link}
-                to={link}
-                smooth={true}
-                duration={500}
-                offset={-70}
-                onClick={() => setNavOpen(false)}
-                className="cursor-pointer text-gray-700 hover:text-blue-500 capitalize"
-              >
-                {link}
-              </Link>
-            ))}
-          </div>
-        )}
+        <button
+          className="md:hidden text-3xl text-blue-600 focus:outline-none hover:text-blue-800 transition-colors duration-300 pr-4"
+          aria-label="Toggle navigation menu"
+          onClick={() => setNavOpen(!navOpen)}
+        >
+          &#9776;
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {navOpen && (
+        <div className="md:hidden bg-white shadow-lg border-t border-gray-200 py-6 flex flex-col items-center space-y-6 text-lg font-medium text-gray-700">
+          {navLinks.map(link => (
+            <Link
+              key={link}
+              to={link}
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={() => setNavOpen(false)}
+              className="capitalize cursor-pointer hover:text-blue-600 transition-colors duration-300"
+            >
+              {link}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
