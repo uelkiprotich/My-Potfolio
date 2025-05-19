@@ -1,36 +1,58 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import profile from '../assets/profile.jpg'; 
-import bg from '../assets/bg-mountain.jpg'; 
+import back from '../assets/bg.mp4';
+import kk from '../assets/ke.jpg';
+
 const Hero = () => {
   return (
     <section
       id="home"
-      className="w-full h-screen bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${bg})` }}
+      className="relative w-full h-screen overflow-hidden"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        poster={kk}
+      >
+        <source src={back} type="video/mp4" />
+      </video>
 
-      {/* Content: FULL WIDTH */}
-      <div className="relative z-10 w-full h-full px-6 py-12 flex flex-col md:flex-row items-center justify-between">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60 z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 flex flex-col md:flex-row items-center justify-center md:justify-between max-w-7xl mx-auto h-full px-6 py-16">
+        
         {/* Left Column */}
-        <div className="text-white space-y-6 md:pl-20 md:w-1/2 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold">UEL KIPROTICH</h1>
-          <h2 className="text-xl md:text-2xl">
-            And I'm a <span className="text-cyan-400 font-semibold">Software Developer & Network Technician</span>
+        <div className="text-white space-y-6 md:w-1/2 w-full max-w-xl text-center md:text-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">
+            UEL KIPROTICH
+          </h1>
+          <h2 className="text-lg sm:text-xl md:text-2xl">
+            And I'm a{' '}
+            <span className="text-cyan-400 font-semibold">
+              Software Developer & Network Technician
+            </span>
           </h2>
-          <p className="max-w-md text-gray-200">
-           Motivated IT graduate specialized in web and mobile development, with real-world experience in system setup, network engineering, and building user-centric software solutions. Focused on delivering clean, reliable, and scalable code.
+          <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
+            A results-driven Information Technology professional with experience as an IT Technician, Web and Mobile Developer,
+             and Network Engineer. Skilled in modern web technologies, system maintenance, and network infrastructure,
+              with a strong foundation in technical support and application development. Known for delivering user-focused solutions, 
+              thriving in collaborative environments, and continuously pursuing technological excellence.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-4">
             <a
               href="/cv-uel-kiprotich.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-cyan-500 text-white px-5 py-2 rounded-full hover:bg-cyan-600 transition"
+              className="bg-cyan-500 text-white px-5 py-2 rounded-full hover:bg-cyan-600 shadow-md transition font-semibold"
             >
               📄 View CV
             </a>
@@ -39,35 +61,34 @@ const Hero = () => {
               smooth={true}
               duration={500}
               offset={-70}
-              className="bg-transparent border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition cursor-pointer"
+              className="border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition cursor-pointer shadow-md font-semibold"
             >
               Explore My Work
             </Link>
           </div>
 
           {/* Social Links */}
-          <div className="flex space-x-5 text-xl pt-4 justify-center md:justify-start">
-            <a href="https://github.com/uelkiprotich" target="_blank" rel="noreferrer"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/uel-kiprotich-659395231/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-            <a href="mailto:uelkiprotich@gmail.com"><FaEnvelope /></a>
+          <div className="flex space-x-6 text-2xl pt-6 justify-center md:justify-start text-gray-300">
+            <a href="https://github.com/uelkiprotich" target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-white transition">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/uel-kiprotich-659395231/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-white transition">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:uelkiprotich@gmail.com" aria-label="Email" className="hover:text-white transition">
+              <FaEnvelope />
+            </a>
           </div>
         </div>
 
-        {/* Right Column */}
-        {/* Right Side – Styled Image */}
-<div className="relative w-[250px] h-[270px]">
-  {/* Hex Background with subtle glow */}
-  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-cyan-400 to-cyan-300 rounded-[20%] clip-hex shadow-xl z-0" />
-
-  {/* Profile Image */}
-  <img
-    src={profile}
-    alt="Uel Kiprotich"
-    className="relative z-10 w-[220px] h-[250px] object-cover rounded-[20%] clip-hex ring-2 ring-white"
-  />
-</div>
-
-
+        {/* Right Column - hidden on small screens */}
+        <div className="relative w-84 h-132 rounded-3xl overflow-hidden shadow-lg ring-4 ring-cyan-400 mt-12 md:mt-0 hidden md:block">
+          <img
+            src={profile}
+            alt="Uel Kiprotich"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
       </div>
     </section>

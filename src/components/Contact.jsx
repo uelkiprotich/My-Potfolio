@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   FaPhone,
   FaEnvelope,
@@ -7,10 +8,72 @@ import {
 } from 'react-icons/fa';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    phone: '',
+    subject: '',
+    email: '',
+    message: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [responseMsg, setResponseMsg] = useState('');
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResponseMsg('');
+
+    // Simple front-end validation example
+    if (!formData.email || !formData.message) {
+      setResponseMsg('Email and message are required.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log('Submitting form data:', formData);
+
+      const res = await fetch('http://localhost:8000/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', res.status);
+
+      const data = await res.json();
+
+      console.log('Response JSON:', data);
+
+      if (res.ok) {
+        setResponseMsg('Message sent successfully!');
+        setFormData({
+          first_name: '',
+          last_name: '',
+          phone: '',
+          subject: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        setResponseMsg(data.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      setResponseMsg('Server error, please try later.');
+    }
+    setLoading(false);
+  };
+
   return (
     <section id="contact" className="bg-[#0e1122] text-white px-6 py-10">
       <div className="w-full max-w-full px-4 md:px-8">
-
         <h2 className="text-3xl font-semibold text-center mb-12">
           Contact <span className="text-cyan-400">Me</span>
         </h2>
@@ -74,17 +137,15 @@ const Contact = () => {
           </div>
 
           {/* Right Side Form — ACTION CONNECTED */}
-          <form
-            action="http://localhost:8000/send-emai"
-            method="POST"
-            className="space-y-4"
-          >
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
                 name="first_name"
                 placeholder="First Name"
                 required
+                value={formData.first_name}
+                onChange={handleChange}
                 className="bg-[#1a1d2e] p-3 rounded text-white"
               />
               <input
@@ -92,12 +153,16 @@ const Contact = () => {
                 name="last_name"
                 placeholder="Last Name"
                 required
+                value={formData.last_name}
+                onChange={handleChange}
                 className="bg-[#1a1d2e] p-3 rounded text-white"
               />
               <input
                 type="text"
                 name="phone"
                 placeholder="Phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="bg-[#1a1d2e] p-3 rounded text-white"
               />
               <input
@@ -105,6 +170,8 @@ const Contact = () => {
                 name="subject"
                 placeholder="Subject"
                 required
+                value={formData.subject}
+                onChange={handleChange}
                 className="bg-[#1a1d2e] p-3 rounded text-white"
               />
             </div>
@@ -113,6 +180,8 @@ const Contact = () => {
               name="email"
               placeholder="Email"
               required
+              value={formData.email}
+              onChange={handleChange}
               className="w-full bg-[#1a1d2e] p-3 rounded text-white"
             />
             <textarea
@@ -120,14 +189,22 @@ const Contact = () => {
               rows="4"
               placeholder="Message"
               required
+              value={formData.message}
+              onChange={handleChange}
               className="w-full bg-[#1a1d2e] p-3 rounded text-white"
             ></textarea>
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-cyan-400 text-black py-2 rounded font-semibold hover:bg-cyan-500 transition"
             >
-              Submit
+              {loading ? 'Sending...' : 'Submit'}
             </button>
+            {responseMsg && (
+              <p className={`mt-4 ${responseMsg.includes('success') ? 'text-green-500' : 'text-red-500'}`}>
+                {responseMsg}
+              </p>
+            )}
           </form>
         </div>
       </div>
