@@ -12,7 +12,7 @@ import './App.css'
 
 function App() {
   return (
-    <div>
+    <div className="w-screen min-h-screen  m-0 p-0 overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />

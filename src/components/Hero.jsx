@@ -1,8 +1,7 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import profile from '../assets/profile.jpg'; 
-import bg from '../assets/bg-mountain.jpg'; // new wide background
-
+import bg from '../assets/bg-mountain.jpg'; 
 const Hero = () => {
   return (
     <section
@@ -19,7 +18,7 @@ const Hero = () => {
         <div className="text-white space-y-6 md:pl-20 md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold">UEL KIPROTICH</h1>
           <h2 className="text-xl md:text-2xl">
-            And I'm a <span className="text-cyan-400 font-semibold">Web & Mobile Developer</span>
+            And I'm a <span className="text-cyan-400 font-semibold">Software Developer & Network Technician</span>
           </h2>
           <p className="max-w-md text-gray-200">
            Motivated IT graduate specialized in web and mobile development, with real-world experience in system setup, network engineering, and building user-centric software solutions. Focused on delivering clean, reliable, and scalable code.

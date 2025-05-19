@@ -7,10 +7,10 @@ const Navbar = () => {
   const navLinks = ['home', 'about', 'skills', 'projects', 'contact'];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-blue-600">UEL KIPROTICH</h1>
-        <div className="hidden md:flex space-x-6">
+    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50 overflow-x-hidden">
+      <div className="w-screen px-4 py-4 flex items-center">
+        <h1 className="text-xl font-bold text-blue-600 mr-8">UEL KIPROTICH</h1>
+        <div className="hidden md:flex space-x-6 flex-grow justify-end">
           {navLinks.map(link => (
             <Link
               key={link}
@@ -32,7 +32,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {navOpen && (
-          <div className="absolute top-16 left-0 w-full bg-white shadow-md py-6 flex flex-col items-center space-y-4 md:hidden">
+          <div className="absolute top-16 left-0 w-screen bg-white shadow-md py-6 flex flex-col items-center space-y-4 md:hidden">
             {navLinks.map(link => (
               <Link
                 key={link}
