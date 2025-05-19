@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-md shadow-md z-50">
-      <div className="flex items-center justify-between py-4">
+      <div className="flex items-center justify-between py-4 px-6">
         {/* Logo flush left */}
         <div className="flex-shrink-0 pl-4">
           <h1 className="text-2xl font-extrabold text-blue-600 tracking-wide cursor-pointer select-none">
@@ -16,7 +16,7 @@ const Navbar = () => {
         </div>
 
         {/* Nav links container */}
-        <div className="hidden md:flex space-x-12 text-gray-700 text-lg font-medium max-w-7xl mx-auto px-6 flex-grow justify-end">
+        <div className="hidden md:flex space-x-12 text-gray-700 text-lg font-medium flex-grow justify-end">
           {navLinks.map(link => (
             <Link
               key={link}
