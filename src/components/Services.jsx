@@ -3,7 +3,7 @@ import { MdOutlineLan } from 'react-icons/md';
 
 const services = [
   {
-    title: 'Web Developer',
+    title: 'Software Developer',
     icon: <FaCode className="text-4xl text-cyan-400" />,
     description:
       'I design and develop responsive web and mobile applications. I build clean, performant, and accessible UIs using modern tech.',
