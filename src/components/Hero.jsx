@@ -49,7 +49,7 @@ const Hero = () => {
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-4">
             <a
-              href="/cv-uel-kiprotich.pdf"
+              href="/UEL KIPROTICH.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-500 text-white px-5 py-2 rounded-full hover:bg-cyan-600 shadow-md transition font-semibold"
