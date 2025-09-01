@@ -18,11 +18,11 @@ const projects = [
     
   },
   {
-    title: 'Mini Tender Management System',
+    title: 'Engolon Livestock Hub',
     description:
-      'A role-based fullstack bidding platform with vendor management, tender status tracking and JSON-server API integration.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'JSON Server'],
-    image: '/project2.jpg',
+      'A smart Ecommerce platform targeting the Kenyan market,Features include order placement, Livestock listing, testimonials, and Mpesa integration',
+    tech: ['React', 'Firebase', 'Tailwind', 'Node.js'],
+    image: 'engolon.png',
     
   },
   {
