@@ -59,7 +59,7 @@ const About = () => {
                     <h4 className="text-cyan-400 font-bold">BSc in Information Technology</h4>
                     <p>Institute: Kisii University</p>
                     <p>Session: 2021 – 2025</p>
-                    <p>Result: Ongoing</p>
+                    <p>Result: completed</p>
                   </div>
                 </>
               )}
