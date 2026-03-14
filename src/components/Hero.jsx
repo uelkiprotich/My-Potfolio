@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-import profile from '../assets/profile.jpg'; 
+import profile from '../assets/profile.jpeg'; 
 import back from '../assets/bg.mp4';
 import kk from '../assets/ke.jpg';
 
