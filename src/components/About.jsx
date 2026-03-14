@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import profile from '../assets/profile.jpg'; 
+import profile from '../assets/profile.jpeg'; 
 
 const tabs = ['Education', 'Courses', 'Experience', 'Details'];
 
